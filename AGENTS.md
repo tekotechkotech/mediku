@@ -8,6 +8,7 @@ Before implementing a task, read:
 - `README.md`
 - `docs/product/product-brief.md`
 - `docs/architecture/tech-stack.md`
+- `docs/architecture/coding-standards.md`
 - `docs/ui-ux/design-direction.md`
 - `docs/ui-ux/design-system.md`
 - `docs/ui-ux/information-architecture.md`
@@ -58,15 +59,18 @@ Optimize for repeated practice, varied case exposure, safe mistakes, clinical re
 ## 6. Engineering behavior
 
 - The selected initial stack is Laravel, MariaDB, and Turbo (Hotwire Turbo; see `docs/architecture/tech-stack.md`). Do not silently substitute another backend framework, database, or frontend navigation/interaction framework.
-- Inspect the actual repository and installed versions before choosing implementation details. Do not assume Laravel version, PHP version, database version, asset bundler, CSS framework, or Turbo integration package.
-- Prefer server-rendered Laravel views enhanced with Turbo navigation, Frames, and Streams where appropriate. Keep frontend complexity proportional to the interaction; do not introduce a SPA framework by default.
-- Inspect the existing codebase and conventions before editing.
-- Keep changes scoped to the requested task.
+- Apply SOLID principles pragmatically and follow `docs/architecture/coding-standards.md`. Prioritize readable, traceable code over clever abstractions or strict pattern compliance.
+- Inspect actual repository and installed versions before choosing implementation details. Do not assume framework/runtime versions, database version, asset bundler, CSS framework, or Turbo integration package.
+- Prefer server-rendered Laravel views enhanced with Turbo navigation, Frames, and Streams where appropriate. Do not introduce a SPA framework by default.
+- Keep controllers focused on HTTP concerns; put substantial use-case orchestration in clearly named application Actions/Use Cases.
+- Keep business rules out of Blade templates. Avoid bloated models, controllers, and service classes.
+- Use dependency injection and explicit boundaries where they improve testability or isolate changing dependencies.
+- Do not create interfaces, repositories, factories, managers, or layers without a concrete reason.
+- Use consistent naming, predictable file locations, and small cohesive classes so a feature can be traced from route to UI, application logic, persistence, and tests.
+- Inspect existing code and conventions before editing. Keep changes scoped to the requested task.
 - Do not add dependencies without explaining why they are needed.
 - Preserve accessibility: semantic structure, keyboard support, visible focus, sufficient contrast, and touch-friendly controls.
 - Handle loading, empty, error, success, and disabled states where relevant.
-- Avoid duplicate components and one-off styling when a shared pattern is appropriate.
-- Do not add mock data that could be mistaken for real clinical data.
 - Never commit secrets, credentials, tokens, or patient-identifiable data.
 
 ## 7. Task execution protocol
@@ -77,18 +81,13 @@ For each task:
 3. Summarize the intended change and affected areas.
 4. Implement the smallest coherent change.
 5. Run relevant tests, linting, type checks, and build commands available in the project.
-6. Verify the mobile layout and responsive behavior.
-7. Report files changed, checks run, results, known limitations, and any product decisions needed.
+6. Verify mobile layout and responsive behavior.
+7. Report files changed, checks run, results, known limitations, and product decisions needed.
 
 Do not claim a check passed unless it was actually run.
 
 ## 8. Definition of done
 
-A UI task is complete only when:
-- It matches the documented product intent and design direction.
-- The mobile experience is usable and verified.
-- Responsive behavior is considered for larger screens.
-- Interactive states are implemented, not merely drawn.
-- Accessibility basics are addressed.
-- Relevant tests/checks have been run or explicitly reported as not available.
-- Documentation is updated when a durable design or behavior decision changes.
+A UI task is complete only when it matches the documented design, works on mobile and larger screens, implements interactive states, addresses accessibility, and reports relevant checks.
+
+A backend task is complete only when responsibilities are cohesive, business rules are not hidden in controllers/views, important behavior and edge cases are tested, and code is straightforward to locate and trace.
