@@ -14,11 +14,15 @@ Mediku helps clinical-year medical students turn clinical exposure into deeper u
 2. [UI/UX design direction](docs/ui-ux/design-direction.md)
 3. [Design system foundation](docs/ui-ux/design-system.md)
 4. [Information architecture and user flows](docs/ui-ux/information-architecture.md)
-5. [Agent instructions](AGENTS.md)
-6. [Visual reference](docs/assets/references/home-mobile-concept.svg)
+5. [Technology stack](docs/architecture/tech-stack.md)
+6. [Agent instructions](AGENTS.md)
+7. [Visual reference](docs/assets/references/home-mobile-concept.svg)
 
 ## Current decisions
 
+- **Backend:** Laravel.
+- **Database:** MariaDB.
+- **Frontend interaction/navigation:** Turbo (assuming Hotwire Turbo); confirm exact package and integration approach before implementation.
 - Mobile-first responsive web app / PWA direction.
 - Playful, friendly, modern, polished visual language; playful but not childish.
 - Four primary navigation areas: Home, Campaign, Learn, Progress.
