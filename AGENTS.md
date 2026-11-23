@@ -7,6 +7,7 @@ These instructions apply to every AI coding agent and contributor working in thi
 Before implementing a task, read:
 - `README.md`
 - `docs/product/product-brief.md`
+- `docs/architecture/tech-stack.md`
 - `docs/ui-ux/design-direction.md`
 - `docs/ui-ux/design-system.md`
 - `docs/ui-ux/information-architecture.md`
@@ -56,8 +57,10 @@ Optimize for repeated practice, varied case exposure, safe mistakes, clinical re
 
 ## 6. Engineering behavior
 
+- The selected initial stack is Laravel, MariaDB, and Turbo (Hotwire Turbo; see `docs/architecture/tech-stack.md`). Do not silently substitute another backend framework, database, or frontend navigation/interaction framework.
+- Inspect the actual repository and installed versions before choosing implementation details. Do not assume Laravel version, PHP version, database version, asset bundler, CSS framework, or Turbo integration package.
+- Prefer server-rendered Laravel views enhanced with Turbo navigation, Frames, and Streams where appropriate. Keep frontend complexity proportional to the interaction; do not introduce a SPA framework by default.
 - Inspect the existing codebase and conventions before editing.
-- Do not assume a framework, library, directory structure, or architecture until verified in the repository.
 - Keep changes scoped to the requested task.
 - Do not add dependencies without explaining why they are needed.
 - Preserve accessibility: semantic structure, keyboard support, visible focus, sufficient contrast, and touch-friendly controls.
