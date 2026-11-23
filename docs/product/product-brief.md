@@ -184,3 +184,13 @@ Measure:
 - Learner-reported cognitive load and usefulness.
 
 Do not optimize only for session length, clicks, streaks, or gamification engagement.
+
+
+## 13. Initial technology direction
+
+- Backend/application framework: Laravel.
+- Relational database: MariaDB.
+- Frontend navigation and progressive enhancement: Turbo, interpreted as Hotwire Turbo (Turbo Drive, Frames, and Streams).
+- The intended approach is a Laravel-rendered application, using Blade views enhanced by Turbo rather than introducing a client-rendered SPA by default.
+- Exact framework/runtime versions, Turbo integration package, CSS framework, and deployment architecture remain open until the repository implementation is inspected and the technical setup is agreed.
+- See [Technology Stack](../architecture/tech-stack.md) for implementation guardrails and unresolved decisions.
