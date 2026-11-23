@@ -27,11 +27,19 @@ The current direction is a Laravel-rendered web application enhanced with Hotwir
 - Use Laravel migrations as the source of truth for schema changes.
 - Use Eloquent where it fits; use explicit queries for complex reporting or performance-sensitive operations when justified.
 - Design indexes and constraints around real access patterns and data integrity.
-- Verify the supported MariaDB version and Laravel database-driver compatibility when the project environment is established.
+- Verify supported MariaDB version and Laravel driver compatibility when the environment is established.
+
+## Code quality and architecture
+
+- Apply SOLID principles pragmatically, not mechanically.
+- Follow [Coding Standards](coding-standards.md).
+- Keep code easy to navigate: predictable naming, cohesive responsibilities, explicit dependencies, and a traceable path from route to view, application logic, persistence, and tests.
+- Prefer the simplest Laravel-native solution that keeps responsibilities clear.
+- Avoid both monolithic controllers/models and excessive abstraction layers.
 
 ## Decisions intentionally left open
 
-Do not assume or independently lock these choices:
+Do not assume or independently lock:
 - Laravel and PHP versions.
 - MariaDB version.
 - Hotwire Turbo package and Laravel integration strategy.
@@ -39,18 +47,16 @@ Do not assume or independently lock these choices:
 - Asset bundler/build tooling.
 - Queue, cache, search, file storage, and realtime infrastructure.
 - Hosting and deployment topology.
-- Whether a PWA install/offline capability is required for the first release.
+- Whether PWA install/offline capability is required for the first release.
 
 ## Implementation guardrails
 
-1. Inspect the repository before scaffolding or installing dependencies. Preserve an existing working setup unless there is a documented reason to change it.
-2. Prefer Laravel's conventional structure and server-side capabilities.
-3. Keep the frontend progressively enhanced: core navigation and essential learning flows should remain robust without relying on complex client-side state.
-4. Use Turbo only where it improves navigation or partial updates; do not force every interaction into a Turbo abstraction.
+1. Inspect the repository before scaffolding or installing dependencies.
+2. Prefer Laravel conventions and server-side capabilities.
+3. Keep the frontend progressively enhanced; essential flows should not depend on complex client-side state.
+4. Use Turbo only where it improves navigation or partial updates.
 5. Ensure forms, validation errors, redirects, browser history, loading states, and accessibility work correctly with Turbo.
-6. Avoid duplicate sources of truth between server state and client state.
-7. Record any deviation from this stack in an architecture decision record before implementation.
+6. Avoid duplicate sources of truth between server and client.
+7. Record deviations from this stack in an architecture decision record before implementation.
 
-## Important clarification
-
-“Turbo” is recorded as **Hotwire Turbo** (Turbo Drive, Frames, and Streams). If the intended Turbo technology is different, correct this document before implementation.
+“Turbo” means **Hotwire Turbo** (Drive, Frames, Streams). Correct this document before implementation if a different Turbo technology was intended.
